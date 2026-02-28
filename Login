@@ -1,0 +1,78 @@
+class user {
+    private String username;
+    private String password;
+
+    public user(String username, String password) {
+    }
+
+    public void user(String username, String password) { //parameterized constructors
+        this.username = username;
+        this.password = password;
+
+    }
+
+    //getters and setters
+    public String getusername() {
+        return username;
+    }
+    public void setusername(String username) {
+        this.username = username;
+    }
+    public String getpassword() {
+        return password;
+    }
+    public void setpassword(String password) {
+        this.password = password;
+    }
+
+    //toString returns only the username
+    @Override
+    public String toString() {
+        return username;
+    }
+}
+class Adminuser extends user {
+    private int adminLevel;
+    public Adminuser(String username, String password, int adminLevel) {
+        super(username,password); //call base constructor
+        this.adminLevel = adminLevel;
+    }
+    public int getAdminLevel() {
+        return adminLevel;
+    }
+    public void setAdminLevel(int adminLevel){
+        this.adminLevel=adminLevel;
+    }
+    @Override
+    public String toString() {
+        return "username: " + getusername() + ", password: " + getpassword();
+    }
+}
+class Customeruser extends user {
+    private String customerId;
+    public Customeruser(String username, String password, int CustomerId) {
+        super(username,password); //call base constructor
+        this.customerId = null;
+    }
+    public String getcustomerId() {
+        return customerId;
+    }
+    public void setcustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+    @Override
+    public String toString() {
+        return "username: " + getusername() + ", customerId: " + getcustomerId();
+    }
+}
+public class LoginSystemDemo {
+    public static void main(String[] args) {
+
+        Adminuser admin = new Adminuser("adminA","adminPass123", 10);
+        Customeruser customer = new Customeruser("customerB", "cuStpass456", 20);
+
+        //display details using toString()
+        System.out.println(admin.toString());
+        System.out.println(customer);
+    }
+}
